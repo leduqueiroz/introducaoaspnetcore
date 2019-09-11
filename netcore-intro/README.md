@@ -11,6 +11,8 @@ Após esses encontros:
 
 ## Configurando o ambiente:
 
+### .NET CORE
+
 O primeiro passo é instalar o .Net Core em seu computador.
 o .Net Core nada mais é do que um SDK gratuito, Open Source e multi-plataforma (Windows, Linux e MAC) da microsoft.
 
