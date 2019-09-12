@@ -3,3 +3,10 @@
 ################################################################################
 
 *.lock
+/netcore-intro/src/Parking.Sln/.vs/Parking/v16/Server/sqlite3
+/netcore-intro/src/Parking.Sln/.vs/Parking/v16
+/netcore-intro/src/Parking.Sln/Parking.Application/obj
+/netcore-intro/src/Parking.Sln/Parking.Domain/obj
+/netcore-intro/src/Parking.Sln/Parking.Dto/obj
+/netcore-intro/src/Parking.Sln/Parking.Infra/obj
+/netcore-intro/src/Parking.Sln/Parking.Web/obj
