@@ -111,7 +111,7 @@ Instale o postman, disponível em: https://www.getpostman.com/downloads/
 
 Em seguida envie a requição de inserção e verifique o registro no seu banco de dados.
 
-![alt text](images/post.png)
+![alt text](images/post.PNG)
 
 
 No próximo encontro vamos trabalhar com:
