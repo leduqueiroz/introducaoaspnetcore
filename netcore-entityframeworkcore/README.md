@@ -34,8 +34,8 @@ Nesse projeto vamos utilizar o Code-First (introduzido no Entity Framework 4.1),
 
 4. Nesse ponto vamos atualizar nosso banco de dados a partir das entidades geradas com os comandos:
  
-PM> dotnet ef migrations add initial --project .\Parking.Domain --startup-project .\Parking.Web
-PM> dotnet ef database update --project .\Parking.Domain --startup-project .\Parking.Web
+PM> dotnet ef migrations add initial --project .\Parking.Domain --startup-project .\Parking.Web  
+PM> dotnet ef database update --project .\Parking.Domain --startup-project .\Parking.Web  
 
   ![alt text](images/database.gif)
 
@@ -49,7 +49,7 @@ Para resolver esse problema podemos usar os arquivos de Map, ainda no projeto Pa
 5. Após a criação dos arquivos, vamos acrescentar os mesmos no nosso DataContext.
 6. Por último vamos gerar uma nova versão do Migration e aplicar as atualizações de Bando de Dados definidas.
 
-PM> dotnet ef migrations add v2 --project .\Parking.Domain --startup-project .\Parking.Web
+PM> dotnet ef migrations add v2 --project .\Parking.Domain --startup-project .\Parking.Web  
 PM> dotnet ef database update --project .\Parking.Domain --startup-project .\Parking.Web
 
 ![alt text](images/update.gif)
