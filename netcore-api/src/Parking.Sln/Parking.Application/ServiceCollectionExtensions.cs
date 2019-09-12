@@ -7,7 +7,12 @@ namespace Parking.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
+            services.AddTransient<IAgreementAppService, AgreementAppService>();
+            services.AddTransient<IAssociateAppService, AssociateAppService>();
+            services.AddTransient<ICarAppService, CarAppService>();
+            services.AddTransient<ICustomerAppService, CustomerAppService>();
             services.AddTransient<IParkingAppService, ParkingAppService>();
+            services.AddTransient<IRateAppService, RateAppService>();
 
             return services;
         }

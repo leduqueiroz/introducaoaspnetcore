@@ -1,24 +1,22 @@
 ﻿using Parking.Domain.Interface;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Parking.Domain
+namespace Parking.Domain.Services
 {
-    public class ParkingDomainService : IParkingDomainService
+    public class CustomerDomainService : ICustomerDomainService
     {
         private ParkingDataContext _context { get; set; }
 
-        public ParkingDomainService(ParkingDataContext context)
+        public CustomerDomainService(ParkingDataContext context)
         {
             _context = context;
         }
 
-        public bool Create(Parking parking)
+        public bool Create(Domain.Customer customer)
         {
             try
             {
-                _context.Parking.Add(parking);
+                _context.Customers.Add(customer);
+
                 _context.SaveChanges();
 
                 return true;
