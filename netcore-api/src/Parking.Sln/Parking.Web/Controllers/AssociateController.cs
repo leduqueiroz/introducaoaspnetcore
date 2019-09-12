@@ -7,7 +7,7 @@ namespace Parking.Web.Controllers
     [ApiController]
     public class AssociateController : ControllerBase
     {
-        public IAssociateAppService _associateAppService { get; set; }
+        private IAssociateAppService _associateAppService { get; set; }
 
         public AssociateController(IAssociateAppService associateAppService)
         {

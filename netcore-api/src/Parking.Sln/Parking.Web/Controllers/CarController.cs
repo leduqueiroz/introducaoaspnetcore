@@ -7,7 +7,7 @@ namespace Parking.Web.Controllers
     [ApiController]
     public class CarController : ControllerBase
     {
-        public ICarAppService _carAppService { get; set; }
+        private ICarAppService _carAppService { get; set; }
 
         public CarController(ICarAppService carAppService)
         {

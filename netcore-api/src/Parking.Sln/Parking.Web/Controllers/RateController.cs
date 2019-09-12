@@ -7,7 +7,7 @@ namespace Parking.Web.Controllers
     [ApiController]
     public class RateController : ControllerBase
     {
-        public IRateAppService _rateAppService { get; set; }
+        private IRateAppService _rateAppService { get; set; }
 
         public RateController(IRateAppService rateAppService)
         {

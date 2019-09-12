@@ -7,7 +7,7 @@ namespace Parking.Web.Controllers
     [ApiController]
     public class AgreementController : ControllerBase
     {
-        public IAgreementAppService _agremmentAppService { get; set; }
+        private IAgreementAppService _agremmentAppService { get; set; }
 
         public AgreementController(IAgreementAppService agremmentAppService)
         {
