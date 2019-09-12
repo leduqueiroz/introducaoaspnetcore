@@ -101,9 +101,9 @@ Eles podem ser adicionados de três maneiras:
 
 2. No nosso projeto de domínio (Parking.Domain) vamos implementar nosso Service, para isso:  
 
-         2.1.  Criar a interface do DomainService - IParkingDomainService  
+    2.1.  Criar a interface do DomainService - IParkingDomainService  
   
-         2.2.  Criar a implementação - ParkingDomainService  
+    3.2.  Criar a implementação - ParkingDomainService  
   
 3. Implemente o método Create no AppService, para isso, adicione a camada de Domain por injeção de dependência.
 
