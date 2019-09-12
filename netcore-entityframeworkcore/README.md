@@ -9,45 +9,56 @@ Após esses encontros:
 
 * Vamos criar uma API básica com entity framework core e SQL
 
-## Configurando o ambiente:
+### Entity Framework Core
 
-### .NET CORE
+O Entity Framework Core é uma solução de ORM (Mapeamento Objeto Relacional) que basicamento, realiza o dê-para de suas entidades para suas tabelas no Banco de Dados.
 
-O primeiro passo é instalar o .Net Core em seu computador.
-o .Net Core nada mais é do que um SDK gratuito, Open Source e multi-plataforma (Windows, Linux e MAC) da microsoft.
+1. Para iniciar sua instação, acesse o Package Manager Console e digite o comando de instalação do pacote e em seguida a instação do provider para SQL SERVER:
 
-O download pode ser feito em: https://www.microsoft.com/net
+PM> Install-Package Microsoft.EntityFrameworkCore  
+PM> Install-Package Microsoft.EntityFrameworkCore.SqlServer
 
-![alt text](images/aspnetcore.gif)
+![alt text](images/packages.gif)
   
-Em seguida vamos configurar o Docker para prover nosso acesso ao banco de dados SQL SERVER. Não vamos estudar todas as possibilidades e facilidades que o Docker pode oferecer, nesse momento, utilizaremos o mesmo apenas para auxiliar no ambiente de desenvolvimento.
+2. Agora vamos criar as nossas entidades no projeto Parking.Domain:
+
+* Agreement | Associate | Car | Customer | Parking | Rate
  
-O download pode ser realizado em: https://www.docker.com
+3. Ainda em Parking.Domain, vamos criar o DataContext - que será a nossa representação do Banco de dados no projeto:
  
-Em conjunto com o Docker vamos utilizar o Kitematic, para auxiliar visualmente a instalação/configuração dos containers, ele pode ser encontrado em: https://kitematic.com/
+* ParkingDataContext
  
-![alt text](images/docker.gif)
-  
-Para finalizar o ambiente vamos instalar o VSCommunity, uma IDE de desenvolvimento gratuira e extensível para criação de aplicações. Seu download pode ser feito em: https://visualstudio.microsoft.com/pt-br/vs/community
+Nesse projeto vamos utilizar o Code-First (introduzido no Entity Framework 4.1), com isso teremos um controle maior (há nível de código-fonte) ou seja, nossas classes (entidades criadas acima) são codificadas primeiro e em seguida geramos o banco de dados necessário para persistir os dados. 
+ 
+ ![alt text](images/entities.gif)
 
-## Estrutura do projeto:
+4. Nesse ponto vamos atualizar nosso banco de dados a partir das entidades geradas com os comandos:
+ 
+PM> dotnet ef migrations add initial --project .\Parking.Domain --startup-project .\Parking.Web
+PM> dotnet ef database update --project .\Parking.Domain --startup-project .\Parking.Web
 
-Para iniciar nossos encontros, vamos montar a estrutura inicial do nosso projeto, para isso:
+  ![alt text](images/database.gif)
 
-1. Executar o VS Comunnity e criar nossa solução: Parking.Sln
-2. Criar o projeto da API: Parking.Web
-3. Criar o projeto: Parking.Application
-4. Criar a camada de domínio: Parking.Domain
-5. Criar o projeto: Parking.Dto
-6. Criar o projeto: Parking.Infra
+5. Podemos verificar que as tabelas foram geradas com os nomes pluaralizados e alguns campos talvez não atendam a necessidade do negócio e que podem influenciar na performance da nossa aplicação. 
+Para resolver esse problema podemos usar os arquivos de Map, ainda no projeto Parking.Domain
 
-![alt text](images/project.gif)
+* AgreementMap | AssociateMap | CarMap | CustomerMap | ParkingMap | RateMap
 
-No próximo encontro vamos iniciar com:
+![alt text](images/map.gif)
 
-* Modelagem de dados
-* Entity Framework Core
-* Mapeamento objeto relacional
+5. Após a criação dos arquivos, vamos acrescentar os mesmos no nosso DataContext.
+6. Por último vamos gerar uma nova versão do Migration e aplicar as atualizações de Bando de Dados definidas.
+
+PM> dotnet ef migrations add v2 --project .\Parking.Domain --startup-project .\Parking.Web
+PM> dotnet ef database update --project .\Parking.Domain --startup-project .\Parking.Web
+
+![alt text](images/update.gif)
+
+No próximo encontro vamos trabalhar com:
+
+* Criação da API
+* DDD
+* Rotas e CRUD
   
   
  
