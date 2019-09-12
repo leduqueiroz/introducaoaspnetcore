@@ -71,8 +71,10 @@ Os pilares básicos do DDD são:
 
 Entendendo basicamnete o conceito de DDD e de nossa arquitetura, podemos seguir com a criação da nossa camada Application. Elas será responsável por coordenar a execução de alguma tarefa da nossa aplicação, após identificar ela delega essa tarefa para os objetos de domínio de uma camada inferior.
 
-1 . Criar a Interface do Application - IParkingAppService
-2 . Criar a implementação - ParkingAppService
+1 . Criar a Interface do Application - IParkingAppService  
+
+2 . Criar a implementação - ParkingAppService  
+
 
 ### Injeção de dependência
 
