@@ -1,4 +1,4 @@
-# Bem Vindos ao .Net Core!
+# Bem vindos ao .Net Core!
 
 Público alvo desse treinamento:
 
