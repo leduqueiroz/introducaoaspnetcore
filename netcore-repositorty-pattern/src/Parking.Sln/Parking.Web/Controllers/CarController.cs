@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Parking.Application.Interface;
+using Parking.Dto;
 
 namespace Parking.Web.Controllers
 {
@@ -15,10 +16,10 @@ namespace Parking.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody]Domain.Car car)
+        public IActionResult Create([FromBody]CarDto carDto)
         {
-            if (_carAppService.Create(car))
-                return Ok(car);
+            if (_carAppService.Create(carDto))
+                return Ok(carDto);
             else
                 return BadRequest();
         }

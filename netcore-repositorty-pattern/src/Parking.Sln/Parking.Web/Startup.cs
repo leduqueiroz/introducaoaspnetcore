@@ -1,8 +1,12 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using Parking.Application;
+using Parking.Domain;
+using Parking.Infra;
 
 namespace Parking.Web
 {
@@ -12,7 +16,11 @@ namespace Parking.Web
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().AddFluentValidation().
+                SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddDomain();
+            services.AddApplication();
+            services.AddInfra();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

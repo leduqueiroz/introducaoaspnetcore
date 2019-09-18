@@ -1,7 +1,9 @@
-﻿namespace Parking.Application.Interface
+﻿using Parking.Dto;
+
+namespace Parking.Application.Interface
 {
     public interface IAssociateAppService
     {
-        bool Create(Domain.Associate associate);
+        bool Create(AssociateDto associateDto);
     }
 }

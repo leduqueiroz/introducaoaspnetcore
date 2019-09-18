@@ -1,7 +1,9 @@
-﻿namespace Parking.Domain.Interface
+﻿using Parking.Dto;
+
+namespace Parking.Domain.Interface
 {
     public interface ICarDomainService
     {
-        bool Create(Domain.Car car);
+        bool Create(CarDto carDto);
     }
 }

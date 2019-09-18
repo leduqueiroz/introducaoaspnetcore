@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Parking.Domain\Parking.Domain.csproj" />
+    <ProjectReference Include="..\Parking.Dto\Parking.Dto.csproj" />
+    <ProjectReference Include="..\Parking.Infra\Parking.Infra.csproj" />
   </ItemGroup>
 
 </Project>

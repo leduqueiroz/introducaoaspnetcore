@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Parking.Application.Interface;
+using Parking.Dto;
 
 namespace Parking.Web.Controllers
 {
@@ -15,10 +16,37 @@ namespace Parking.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody]Domain.Parking parking)
+        public IActionResult Create([FromBody]ParkingDto parkingDto)
         {
-            if (_parkingAppService.Create(parking))
-                return Ok(parking);
+            if (_parkingAppService.Create(parkingDto))
+                return Ok(parkingDto);
+            else
+                return BadRequest();
+        }
+
+        [HttpGet("getall")]
+        public IActionResult GetAll()
+        {
+            return Ok(_parkingAppService.GetAll());
+        }
+
+        [HttpGet("getbyid")]
+        public IActionResult GetById(int id)
+        {
+            return Ok(_parkingAppService.GetById(id));
+        }
+
+        [HttpGet("getallwithdapper")]
+        public IActionResult GetAllWithDapper(int id)
+        {
+            return Ok(_parkingAppService.GetAllWithDapper());
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            if (_parkingAppService.Delete(id))
+                return Ok();
             else
                 return BadRequest();
         }

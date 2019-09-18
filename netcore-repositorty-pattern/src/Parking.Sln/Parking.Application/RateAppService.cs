@@ -1,6 +1,6 @@
 ﻿using Parking.Application.Interface;
 using Parking.Domain.Interface;
-using System.Collections.Generic;
+using Parking.Dto;
 
 namespace Parking.Application
 {
@@ -13,9 +13,9 @@ namespace Parking.Application
             _rateDomainService = rateDomainService;
         }
 
-        public bool Create(Domain.Rate rate)
+        public bool Create(RateDto rateDto)
         {
-            return _rateDomainService.Create(rate);
+            return _rateDomainService.Create(rateDto);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Parking.Application.Interface;
+using Parking.Dto;
 
 namespace Parking.Web.Controllers
 {
@@ -15,10 +16,10 @@ namespace Parking.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody]Domain.Associate associate)
+        public IActionResult Create([FromBody]AssociateDto associateDto)
         {
-            if (_associateAppService.Create(associate))
-                return Ok(associate);
+            if (_associateAppService.Create(associateDto))
+                return Ok(associateDto);
             else
                 return BadRequest();
         }

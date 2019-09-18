@@ -1,7 +1,9 @@
-﻿namespace Parking.Application.Interface
+﻿using Parking.Dto;
+
+namespace Parking.Application.Interface
 {
     public interface IAgreementAppService
     {
-        bool Create(Domain.Agreement agreement);
+        bool Create(AgreementDto agremmentDto);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Parking.Application.Interface;
 using Parking.Domain.Interface;
+using Parking.Dto;
 
 namespace Parking.Application
 {
@@ -12,9 +13,9 @@ namespace Parking.Application
             _carDomainService = carDomainService;
         }
 
-        public bool Create(Domain.Car car)
+        public bool Create(CarDto carDto)
         {
-            return _carDomainService.Create(car);
+            return _carDomainService.Create(carDto);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Parking.Domain.Interface;
+using Parking.Dto;
 
 namespace Parking.Domain.Services
 {
@@ -11,11 +12,17 @@ namespace Parking.Domain.Services
             _context = context;
         }
 
-        public bool Create(Domain.Rate rate)
+        public bool Create(RateDto rateDto)
         {
             try
             {
-                _context.Rates.Add(rate);
+                _context.Rates.Add(new Rate()
+                {
+                    Description = rateDto.Description,
+                    DailyAmount = rateDto.DailyAmount,
+                    HourAmount = rateDto.HourAmount,
+                    OvernightAmount = rateDto.OvernightAmount
+                });
 
                 _context.SaveChanges();
 

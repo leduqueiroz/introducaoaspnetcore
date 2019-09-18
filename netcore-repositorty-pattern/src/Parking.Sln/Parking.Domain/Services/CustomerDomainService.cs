@@ -1,4 +1,5 @@
 ﻿using Parking.Domain.Interface;
+using Parking.Dto;
 
 namespace Parking.Domain.Services
 {
@@ -11,11 +12,16 @@ namespace Parking.Domain.Services
             _context = context;
         }
 
-        public bool Create(Domain.Customer customer)
+        public bool Create(CustomerDto customerDto)
         {
             try
             {
-                _context.Customers.Add(customer);
+                _context.Customers.Add(new Customer()
+                {
+                    Description = customerDto.Description,
+                    Document = customerDto.Document,
+                    Type = customerDto.Type
+                });
 
                 _context.SaveChanges();
 

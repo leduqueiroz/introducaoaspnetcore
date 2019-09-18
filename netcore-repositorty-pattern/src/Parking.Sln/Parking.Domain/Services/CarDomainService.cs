@@ -1,4 +1,5 @@
 ﻿using Parking.Domain.Interface;
+using Parking.Dto;
 
 namespace Parking.Domain.Services
 {
@@ -11,11 +12,17 @@ namespace Parking.Domain.Services
             _context = context;
         }
 
-        public bool Create(Domain.Car car)
+        public bool Create(CarDto carDto)
         {
             try
             {
-                _context.Cars.Add(car);
+                _context.Cars.Add(new Car()
+                {
+                    Color = carDto.Color,
+                    LicensePlate = carDto.LicensePlate,
+                    Model = carDto.Model,
+                    Year = carDto.Year
+                });
 
                 _context.SaveChanges();
 

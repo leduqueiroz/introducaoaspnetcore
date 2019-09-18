@@ -1,7 +1,11 @@
-﻿namespace Parking.Domain.Interface
+﻿using Parking.Dto;
+using System.Collections.Generic;
+
+namespace Parking.Domain.Interface
 {
     public interface IParkingDomainService
     {
-        bool Create(Domain.Parking parking);
+        bool Create(ParkingDto parkingDto);
+        bool Delete(ParkingDto parkingDto);
     }
 }

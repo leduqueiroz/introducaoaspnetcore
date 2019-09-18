@@ -1,7 +1,9 @@
-﻿namespace Parking.Application.Interface
+﻿using Parking.Dto;
+
+namespace Parking.Application.Interface
 {
     public interface IRateAppService
     {
-        bool Create(Domain.Rate rate);
+        bool Create(RateDto rateDto);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Parking.Application.Interface;
 using Parking.Domain.Interface;
+using Parking.Dto;
 
 namespace Parking.Application
 {
@@ -12,9 +13,9 @@ namespace Parking.Application
             _associateDomainService = associateDomainService;
         }
 
-        public bool Create(Domain.Associate associate)
+        public bool Create(AssociateDto associateDto)
         {
-            return _associateDomainService.Create(associate);
+            return _associateDomainService.Create(associateDto);
         }
     }
 }

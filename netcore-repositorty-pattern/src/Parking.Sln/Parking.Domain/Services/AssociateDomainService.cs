@@ -1,4 +1,5 @@
 ﻿using Parking.Domain.Interface;
+using Parking.Dto;
 
 namespace Parking.Domain.Services
 {
@@ -11,11 +12,33 @@ namespace Parking.Domain.Services
             _context = context;
         }
 
-        public bool Create(Domain.Associate associate)
+        public bool Create(AssociateDto associateDto)
         {
             try
             {
-                _context.Associates.Add(associate);
+                _context.Associates.Add(new Associate()
+                {
+                    Agreement = new Agreement()
+                    {
+                        Description = associateDto.Agreement.Description,
+                        DiscountAmount = associateDto.Agreement.DiscountAmount,
+                        DiscountPercentual = associateDto.Agreement.DiscountPercentual
+                    },
+                    Customer = new Customer()
+                    {
+                        Description = associateDto.Customer.Description,
+                        Document = associateDto.Customer.Document,
+                        Type = associateDto.Customer.Type
+                    },
+                    Quantity = associateDto.Quantity,
+                    Rate = new Rate()
+                    {
+                        DailyAmount = associateDto.Rate.DailyAmount,
+                        Description = associateDto.Rate.Description,
+                        HourAmount = associateDto.Rate.HourAmount,
+                        OvernightAmount = associateDto.Rate.OvernightAmount
+                    }
+                });
 
                 _context.SaveChanges();
 

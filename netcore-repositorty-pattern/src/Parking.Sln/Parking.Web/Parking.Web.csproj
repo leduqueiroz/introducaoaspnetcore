@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="8.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
@@ -17,6 +18,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Parking.Application\Parking.Application.csproj" />
     <ProjectReference Include="..\Parking.Domain\Parking.Domain.csproj" />
+    <ProjectReference Include="..\Parking.Dto\Parking.Dto.csproj" />
+    <ProjectReference Include="..\Parking.Infra\Parking.Infra.csproj" />
   </ItemGroup>
 
 </Project>

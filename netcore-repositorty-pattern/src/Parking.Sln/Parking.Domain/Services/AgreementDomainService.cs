@@ -1,4 +1,5 @@
 ﻿using Parking.Domain.Interface;
+using Parking.Dto;
 
 namespace Parking.Domain.Services
 {
@@ -11,11 +12,16 @@ namespace Parking.Domain.Services
             _context = context;
         }
 
-        public bool Create(Domain.Agreement agreement)
+        public bool Create(AgreementDto agremmentDto)
         {
             try
             {
-                _context.Agreements.Add(agreement);
+                _context.Agreements.Add(new Agreement()
+                {
+                    Description = agremmentDto.Description,
+                    DiscountAmount = agremmentDto.DiscountAmount,
+                    DiscountPercentual = agremmentDto.DiscountPercentual
+                });
 
                 _context.SaveChanges();
 
