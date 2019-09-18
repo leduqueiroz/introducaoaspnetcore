@@ -1,4 +1,4 @@
-# Bem Vindos ao .Net Core!
+# Bem vindos ao .Net Core!
 Treinamento de .Net Core para o time de desenvolvimento da TOTVS RJ
 
 [1 - Introdução ](https://github.com/leduqueiroz/introducaoaspnetcore/tree/master/netcore-intro)  
