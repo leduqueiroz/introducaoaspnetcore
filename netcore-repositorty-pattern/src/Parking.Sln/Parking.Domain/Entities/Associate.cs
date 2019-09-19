@@ -6,6 +6,5 @@
         public int Quantity { get; set; }
         public Customer Customer { get; set; }
         public Agreement Agreement { get; set; }
-        public Rate Rate { get; set; }
     }
 }

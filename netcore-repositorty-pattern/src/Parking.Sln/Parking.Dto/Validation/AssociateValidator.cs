@@ -11,7 +11,6 @@ namespace Parking.Dto.Validation
         {
             RuleFor(x => x.Agreement).NotEmpty().WithMessage("Informe o convênio");
             RuleFor(x => x.Customer).NotEmpty().WithMessage("Informe o cliente");
-            RuleFor(x => x.Rate).NotEmpty().WithMessage("Informe as taxas");
             RuleFor(x => x.Quantity).NotEqual(0).WithMessage("Informe a quantidade de vagas");
         }
     }

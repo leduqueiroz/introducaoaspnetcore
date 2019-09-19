@@ -33,5 +33,14 @@ namespace Parking.Domain.Services
                 return false;
             }
         }
+
+        public decimal GenerateAmountByType(RateDto rate, int type)
+        {
+            // Calcula o periodo de acordo com o tipo
+            
+            return (type == 0 ? rate.DailyAmount :
+                        type == 1 ? rate.OvernightAmount :
+                          type == 2 ? rate.HourAmount : rate.DailyAmount);
+        }
     }
 }

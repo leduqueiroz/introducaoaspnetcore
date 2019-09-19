@@ -39,5 +39,19 @@ namespace Parking.Infra
                     Type = x.Type
                 }).FirstOrDefault();
         }
+
+        public CustomerDto GetByReservationId(int reservationId)
+        {
+            return (from customer in _context.Customers
+                    join reservation in _context.Reservations on customer.Id equals reservation.CustomerId
+                    where reservation.Id == reservationId
+                    select new CustomerDto()
+                    {
+                        Id = customer.Id,
+                        Description = customer.Description,
+                        Document = customer.Document,
+                        Type = customer.Type
+                    }).FirstOrDefault();
+        }
     }
 }

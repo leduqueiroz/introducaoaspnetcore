@@ -9,5 +9,6 @@ namespace Parking.Infra.Interface
     {
         List<CustomerDto> GetAll();
         CustomerDto GetById(int id);
+        CustomerDto GetByReservationId(int reservationId);
     }
 }

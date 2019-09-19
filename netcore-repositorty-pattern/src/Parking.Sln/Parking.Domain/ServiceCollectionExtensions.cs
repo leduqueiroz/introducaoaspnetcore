@@ -19,6 +19,7 @@ namespace Parking.Domain
             services.AddTransient<ICarDomainService, CarDomainService>();
             services.AddTransient<ICustomerDomainService, CustomerDomainService>();
             services.AddTransient<IRateDomainService, RateDomainService>();
+            services.AddTransient<IReservationDomainService, ReservationDomainService>();
 
             services.AddTransient<IValidator<ParkingDto>, ParkingValidator>();
             services.AddTransient<IValidator<AgreementDto>, AgreementValidator>();
@@ -26,6 +27,7 @@ namespace Parking.Domain
             services.AddTransient<IValidator<CarDto>, CarValidator>();
             services.AddTransient<IValidator<CustomerDto>, CustomerValidator>();
             services.AddTransient<IValidator<RateDto>, RateValidator>();
+            services.AddTransient<IValidator<ReservationDto>, ReservationValidator>();
 
             return services;
         }

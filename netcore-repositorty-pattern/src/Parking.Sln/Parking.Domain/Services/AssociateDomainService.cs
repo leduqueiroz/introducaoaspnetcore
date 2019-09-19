@@ -30,14 +30,7 @@ namespace Parking.Domain.Services
                         Document = associateDto.Customer.Document,
                         Type = associateDto.Customer.Type
                     },
-                    Quantity = associateDto.Quantity,
-                    Rate = new Rate()
-                    {
-                        DailyAmount = associateDto.Rate.DailyAmount,
-                        Description = associateDto.Rate.Description,
-                        HourAmount = associateDto.Rate.HourAmount,
-                        OvernightAmount = associateDto.Rate.OvernightAmount
-                    }
+                    Quantity = associateDto.Quantity
                 });
 
                 _context.SaveChanges();

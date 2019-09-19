@@ -12,7 +12,6 @@ namespace Parking.Domain.Maps
             builder.Property(x => x.Quantity).IsRequired();
             builder.HasOne(x => x.Customer);
             builder.HasOne(x => x.Agreement);
-            builder.HasOne(x => x.Rate);
         }
     }
 }

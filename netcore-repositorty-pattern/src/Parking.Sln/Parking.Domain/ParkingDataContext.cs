@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Parking.Domain.Entities;
 using Parking.Domain.Maps;
 
 namespace Parking.Domain
@@ -11,6 +12,7 @@ namespace Parking.Domain
         public DbSet<Rate> Rates { get; set; }
         public DbSet<Agreement> Agreements { get; set; }
         public DbSet<Associate> Associates { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -25,6 +27,8 @@ namespace Parking.Domain
             builder.ApplyConfiguration(new CustomerMap());
             builder.ApplyConfiguration(new ParkingMap());
             builder.ApplyConfiguration(new RateMap());
+            builder.ApplyConfiguration(new ReservationMap());
+
         }
     }
 }

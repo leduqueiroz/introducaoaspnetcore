@@ -9,6 +9,5 @@ namespace Parking.Dto
         public int Quantity { get; set; }
         public CustomerDto Customer { get; set; }
         public AgreementDto Agreement { get; set; }
-        public RateDto Rate { get; set; }
     }
 }

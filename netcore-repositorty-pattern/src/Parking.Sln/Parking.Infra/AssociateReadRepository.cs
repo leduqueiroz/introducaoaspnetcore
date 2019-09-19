@@ -34,14 +34,7 @@ namespace Parking.Infra
                             Document = associate.Customer.Document,
                             Type = associate.Customer.Type
                         },
-                        Quantity = associate.Quantity,
-                        Rate = new RateDto()
-                        {
-                            DailyAmount = associate.Rate.DailyAmount,
-                            Description = associate.Rate.Description,
-                            HourAmount = associate.Rate.HourAmount,
-                            OvernightAmount = associate.Rate.OvernightAmount
-                        }
+                        Quantity = associate.Quantity
                     }).ToList();
         }
 
@@ -63,14 +56,7 @@ namespace Parking.Infra
                         Document = x.Customer.Document,
                         Type = x.Customer.Type
                     },
-                    Quantity = x.Quantity,
-                    Rate = new RateDto()
-                    {
-                        DailyAmount = x.Rate.DailyAmount,
-                        Description = x.Rate.Description,
-                        HourAmount = x.Rate.HourAmount,
-                        OvernightAmount = x.Rate.OvernightAmount
-                    }
+                    Quantity = x.Quantity
                 }).FirstOrDefault();
         }
     }

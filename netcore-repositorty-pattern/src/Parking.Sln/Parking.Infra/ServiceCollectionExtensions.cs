@@ -16,6 +16,7 @@ namespace Parking.Infra
             services.AddTransient<ICarReadRepository, CarReadRepository>();
             services.AddTransient<IRateReadRepository, RateReadRepository>();
             services.AddTransient<ICustomerReadRepository, CustomerReadRepository>();
+            services.AddTransient<IReservationReadRepository, ReservationReadRepository>();
 
             return services;
         }
