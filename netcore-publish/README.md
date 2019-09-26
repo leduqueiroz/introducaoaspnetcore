@@ -9,9 +9,9 @@ Após esses encontros:
 
 * Vamos criar uma API básica com entity framework core e SQL
 
-### DTO (Data transfer objects)
+### Cache
 
-Os DTO's resumidamente definem como os dados serão enviados pela rede e como trafegaram entre suas camadas da aplicação. Similar as Views Models, alguns dos benefícios dos objetos Dto's são:
+Existem várias estratégias de chache tanto para backend quando o frontend da sua aplicação, nesse tópico vamos abordar a padrão da Microsoft. Utilizando o mesmo podemos melhorar:
 
 * Não expõe sua entidade
 * Oculta propriedades específicas que os clientes não devem exibir.
