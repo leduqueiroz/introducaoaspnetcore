@@ -44,7 +44,6 @@ services.AddSwaggerGen(x =>
     x.SwaggerDoc("v1", new Info { Title = "Parking API", Version = "v1" });
 });
 ```
--
 ```
 app.UseSwaggerUI(c =>
 {
