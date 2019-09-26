@@ -9,123 +9,98 @@ Após esses encontros:
 
 * Vamos criar uma API básica com entity framework core e SQL
 
-### DTO (Data transfer objects)
+### Cache
 
-Os DTO's resumidamente definem como os dados serão enviados pela rede e como trafegaram entre suas camadas da aplicação. Similar as Views Models, alguns dos benefícios dos objetos Dto's são:
+Existem várias estratégias de chache tanto para backend quando o frontend, nesse tópico vamos abordar a padrão da Microsoft.  O cache pode melhorar significativamente o desempenho e a escalabilidade de um aplicativo, reduzindo o trabalho necessário para gerar o seu conteúdo.  
 
-* Não expõe sua entidade
-* Oculta propriedades específicas que os clientes não devem exibir.
-* Reduz os tamanhos dos objetos
-* Desacopla sua camada de serviços da camada de banco de dados.
+![alt text](images/cache.gif)
+  
+### Compressão  
+  
+Resumidamente, vamos otimizar nossas respostas e aumentar a capacidade e compactando as mensagens.
+  
+1. Primeiramente precisamos instalar o pacote específico:
 
-![alt text](images/dto.gif)
+PM> Install-Package Microsoft.AspNetCore.ResponseCompression
 
-1. Primeiramente vamos criar todos os objetos Dto's que representam nossas entidades: 
+2. Adicione no Startup:  
+  
+_services.AddResponseCompression();_
+_app.UseResponseCompression();_  
+  
+### Documentação  
+  
+Para disponibilizar os métodos da sua API podemos utilizar o Swagger, o setup é bastante simples e pode ser feito da seguinte maneira:
 
-* AgreementDto | AssociateDto | CarDto | CustomerDto | ParkingDto | RateDto
+1. Instale o pacote do Swagger
 
-2. O próximo passo é substituir no nosso Controller (Projeto Parking.Web) a classe que representa a entidade pelo nosso Dto.
-3. Em seguida substitua nas camadas subsequentes (Parking.Application e Parking.Domain)
+PM> Install-Package Swashbuckle.AspnetCore
 
-### Fail Fast Validation
+2. Adicione no Startup os seguintes métodos:  
+  
+```
+services.AddSwaggerGen(x =>
+{
+    x.SwaggerDoc("v1", new Info { Title = "Parking API", Version = "v1" });
+});
+```
+```
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Parking API");
+});
+```  
+  
+Em seguida acesse o endereço: htttp://{endpoint}{port}/swagger  
+  
+![alt text](images/swagger.gif)
+  
+### Versionamento  
+  
+Essa estratégia é necessária por exemplo para controlar e disponibilizar o acesso a diferentes apps e facilita a evolução de sua aplicação sem a geração de 'breaking-changes' no seu ambiente.  
+  
+### GIT
 
-Nesse ponto, caso algum usuário de nossa API envie dados incompletos ou incorretos a validação ocorre apenas na camada de domínio, no momento em que os dados forem persistidos no banco de dados.
-Para evitar isso vamos utilizar o pacote FluentValidation, ele pode ser intalado no pacote Parking.Dto com o seguinte comando:
+O Git é um sistema  de controle de versões ditribuídos, com ele é possível controlar o histórico de alterações de qualquer arquivo e pode ser utilizado por todos que cumpram os requisitos da licença GNU.
 
-PM> Install-Package FluentValidation
+1. Para iniciar instale o GIT:  
+* http://git-scm.com/download/mac - MAC
+* http://msysgit.github.io/ - WINDOWS
+* http://book.git-scm.com/2_installing_git.html - LINUX
 
-1. Crie as validações necessárias para cada Dto, existem diversas validações disponíveis e elas podem ser consultadas em: https://fluentvalidation.net/built-in-validators
+2. Crie uma nova pasta e execute o comando para criar um novo repositório:
+*  _git-init_  
 
-* AgreementValidator | AssociateValidator | CarValidator | CustomerValidator | ParkingValidator | RateValidator
+2. Para obter um repositório execute o comando:
+* _git clone /caminho/para/o/repositório_
 
-2. Instale no projeto Parking.Web o pacote FluentValidation.AspNetCore
+Seus repositórios locais consistem em três "árvores" mantidas pelo git. a primeira delas é sua Working Directory que contém os arquivos vigentes. a segunda Index que funciona como uma área temporária e finalmente a HEAD que aponta para o último commit (confirmação) que você fez.
 
-PM> Install-Package FluentValidation.AspNetCore
+![alt text](images/trees.gif)
 
-3. Adicione os serviços no Startup.cs com o _.AddFluentValidation()_
-4. Na classe ServiceCollectionExtensions do projeto Parking.Domain adicione as validações criadas.
+1. Para adicionar comandos ao Index execute o comando:  
+* _git add <arquivo>_ ou
+* _git add_ *
+        
+2. Para confirmar as mudanças e enviar suas alterações para o HEAD é necessário executar o comando de commit:  
+* _git commit -m "comentários das alterações“_ *
 
-![alt text](images/validation.gif)
+3. O último passo e enviar as alterações para o seu repositório remoto:
+* _git push origin master_
 
-### Repository Pattern
+Podemos utilizar o conceito de Branchs quando for necessário desenvolver funcionalidades isoladas uma das outras.
+Para criar sua branch execute o comando:  
 
-O Repository Pattern é um padrão de projeto que auxiliará para evitar que ocorra um grande acoplamento entre nossas classes e também:
+![alt text](images/branches.gif)
 
-* Encapsula o acesso ao Banco de dados
-* Permite a troca do SGDB sem afetar a aplicação
-* Evita a duplicidade de código
+* _git checkout -b funcionalidade_x_
 
-1. Para iniciar crie o projeto Parking.Infra 
-2. Crie a interface IParkingReadRepository com os métodos
+### Publish
+: TODO
 
-        List<ParkingDto> GetAll();
-        ParkingDto GetById(int id);
+### Monitoramento
+: TODO
 
-3. Implemente a classe ParkingReadRepository e os métodos da interface.
-4. Crie a classe estática ServiceCollectionExtensions e diponibilize os repositórios no método _AddInfra()_ em seguida adicione o mesmo na classe Startup do seu projeto Parking.Web: _services.AddInfra();_
-
-![alt text](images/readrepo.gif)
-
-### Dapper
-
-O Dapper é um micro-ORM que surgiu para resolver as consultar nem sempre tão performaticas de um ORM como o Entity Framework e as limitações do mesmo para alguns cenários.
-
-1. Primeiramente vamos instalar o pacote do Dapper no projeto Parking.Infra
-
-PM> Install-Package Dapper
-
-2. Em seguida vamos criar o método _GetAllWithDapper_ nas nossas interfaces e repositórios
-
-A documentação do Dapper pode ser acessada em: https://dapper-tutorial.net/dapper.  
-Aqui é possível encontrar todas as possibildiades de consultas disponíveis ao se utilizar o pacote.
-
-![alt text](images/dapper.gif)
-
-### API
-
-1. Para finalizar vamos criar nossas rotas nos Controllers, para isso acesse o projeto Parking.Web e adicione os novos métodos _GetAll_, _GetById_, _GetAllWithDapper_ com o verbo _HttpGet_
-
-2. Crie os métodos _GetAll_, _GetById_, _GetAllWithDapper_ na camada Application
-
-3. Em seguida recupere o IParkingReadRepository por injeção de dependência e direcione as consultas para o repositório de leitura.
-
-![alt text](images/appread.gif)
-
-### Camada de aplicação (Application)
-
-Por último vamos implementar o método de Delete no nosso Controller, na nossa camada de aplicação iremos delegar para a camada abaixo (Domain ou Infra) de acordo com a necessidade de nossa aplicações.
-
-1. Vamos criar as rotas nos Controllers, para isso acesse o projeto Parking.Web e adicione o método _Delete_ com o verbo _HttpDelete_
-
-2. Criar o métodos _Delete_ na camada Application
-
-3. Nesse ponto nossa camada de Application irá delegar a consulta da nossa entidade para a camada de Infra e a deleção para a camada de Domain.
-
-![alt text](images/delete.gif)
-
-
-### Postman
-
-Instale o postman, disponível em: https://www.getpostman.com/downloads/
-
-Em seguida teste todas as requisições criadas até o momento no nosso projeto.
-
-![alt text](images/post.PNG)
-
-
-No próximo encontro vamos trabalhar com:
-
-* Regras de negócio
-* Cache
-* Compressão
-* Documentação
-* Publicação
-* Monitoramento
-* Versionamento
-    
+Desse momento em diante já é possível partir para a criação da nossa aplicação de front, para integrar com nossa API e ao final desse desenvolvimento teremos nosso MVP.
      
 .
- 
-
-
-

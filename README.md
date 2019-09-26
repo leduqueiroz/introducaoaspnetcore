@@ -9,5 +9,9 @@ Treinamento de .Net Core para o time de desenvolvimento da TOTVS RJ
   
 [4 - Repository Pattern ]( https://github.com/leduqueiroz/introducaoaspnetcore/tree/master/netcore-repositorty-pattern)  
 
+[5 - Publish ]( https://github.com/leduqueiroz/introducaoaspnetcore/tree/master/netcore-publish)  
+
+
+
  
   
