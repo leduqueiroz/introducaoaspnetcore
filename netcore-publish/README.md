@@ -76,7 +76,7 @@ O Git é um sistema  de controle de versões ditribuídos, com ele é possível 
 
 Seus repositórios locais consistem em três "árvores" mantidas pelo git. a primeira delas é sua Working Directory que contém os arquivos vigentes. a segunda Index que funciona como uma área temporária e finalmente a HEAD que aponta para o último commit (confirmação) que você fez.
 
-![alt text](images/trees.gif)
+![alt text](images/trees.png)
 
 1. Para adicionar comandos ao Index execute o comando:  
 * _git add <arquivo>_ ou
@@ -91,7 +91,7 @@ Seus repositórios locais consistem em três "árvores" mantidas pelo git. a pri
 Podemos utilizar o conceito de Branchs quando for necessário desenvolver funcionalidades isoladas uma das outras.
 Para criar sua branch execute o comando:  
 
-![alt text](images/branches.gif)
+![alt text](images/branches.png)
 
 * _git checkout -b funcionalidade_x_
 
